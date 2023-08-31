@@ -7,12 +7,14 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
+/**
+ * @deprecated (MarketType 재정의)
+ */
+@Deprecated(since = "1")
 @Entity
 @NoArgsConstructor(access = AccessLevel.PACKAGE)
 @Getter
 @Table(name = "domestic_stocks")
-@Deprecated
 public class DomesticStock {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

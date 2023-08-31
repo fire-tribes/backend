@@ -42,10 +42,10 @@ public class CsvToAssetDBService implements CsvToEntity {
         saveUsaStockInfo("csv/nasdaq_stock_info.csv", nasdaqStock);
 
         Category nyseStock = new Category(Country.USA, MarketType.NYSE, AssetCategory.STOCK);
-        saveUsaStockInfo("csv/nyse_stock_info.csv", nasdaqStock);
+        saveUsaStockInfo("csv/nyse_stock_info.csv", nyseStock);
 
         Category amexStock = new Category(Country.USA, MarketType.AMEX, AssetCategory.STOCK);
-        saveUsaStockInfo("csv/amex_stock_info.csv", nasdaqStock);
+        saveUsaStockInfo("csv/amex_stock_info.csv", amexStock);
 
 
         Category usaETF = new Category(Country.USA, MarketType.UNKNOWN, AssetCategory.ETF);
@@ -83,7 +83,7 @@ public class CsvToAssetDBService implements CsvToEntity {
     }
 
     private void saveUsaStockInfo(String fileName, Category category) {
-        List<NasdaqStockDto> nasdaqStockDtos = overseasStockCsvToDBService.csvToDto("csv/nasdaq_stock_info.csv");
+        List<NasdaqStockDto> nasdaqStockDtos = overseasStockCsvToDBService.csvToDto(fileName);
 
         List<Asset> stockAssets = nasdaqStockDtos.stream()
                                                  .filter(stock -> StringUtils.hasLength(stock.getIndustry()))

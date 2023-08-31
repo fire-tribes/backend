@@ -35,8 +35,8 @@ import java.nio.charset.StandardCharsets;
 @Component
 @Slf4j
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
-    private final String LOGIN_URL = "/api/v1/auth/token";
-    private final AntPathRequestMatcher DEFAULT_REQUEST_MATCHER = new AntPathRequestMatcher(LOGIN_URL, "POST");
+    private static final String TOKEN_URL = "/api/v1/auth/token";
+    private final AntPathRequestMatcher DEFAULT_REQUEST_MATCHER = new AntPathRequestMatcher(TOKEN_URL, "POST");
     private SecurityContextHolderStrategy securityContextHolderStrategy = SecurityContextHolder.getContextHolderStrategy();
     private final JwtTokenUtil jwtTokenUtil;
     private final ObjectMapper objectMapper;
@@ -109,7 +109,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     }
 
     private void illegalAuthRequestHandler(HttpServletResponse response, Exception e){
-        log.debug("[Application Error] Invalid login request");
+        log.debug("[Application Error] Invalid login request", e);
         this.securityContextHolderStrategy.clearContext();
         Response<String, Void> errorResponse = Response.failWithMeta(ResponseCode.INVALID_REQUEST_ERROR.getCode(), ResponseCode.INVALID_REQUEST_ERROR.getDesc());
         sendResponse(response, errorResponse);

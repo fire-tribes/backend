@@ -12,7 +12,7 @@ public class KisFeignErrorDecoder implements ErrorDecoder {
     public Exception decode(String methodKey, Response response) {
         final HttpStatus httpStatus = HttpStatus.resolve(response.status());
 
-        if (httpStatus.isError()) {
+        if (httpStatus == null || httpStatus.isError()) {
             throw new KisException(HttpStatus.INTERNAL_SERVER_ERROR, errorDecoder.decode(methodKey, response));
         }
 

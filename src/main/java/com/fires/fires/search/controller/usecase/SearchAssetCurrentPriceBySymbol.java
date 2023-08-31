@@ -21,7 +21,19 @@ public class SearchAssetCurrentPriceBySymbol {
     public List<CurrentPriceResponse> execute(List<Long> assetIds) {
         List<AssetDto> assetDtos = assetReadService.getAssetsInAssetIds(assetIds).stream().map(AssetDto::from).toList();
         LocalDateTime accessTime = LocalDateTime.now();
+        //외부 api로부터 자산의 현재가를 얻어옴
         List<AssetPriceDto> assetsCurrentPrices = assetCurrentInfoService.getAssetsCurrentPrice(assetDtos);
-        return assetsCurrentPrices.stream().map(dto -> new CurrentPriceResponse(dto.assetId(), dto.symbol(), dto.price(), dto.currency(), accessTime)).toList();
+
+        //자산 현재가를 응답객체로 변환
+        return assetsCurrentPrices.stream()
+                                  .map(dto -> createNewDto(accessTime, dto)).toList();
+    }
+
+    private static CurrentPriceResponse createNewDto(LocalDateTime accessTime, AssetPriceDto dto) {
+        return new CurrentPriceResponse(dto.assetId(),
+                                        dto.symbol(),
+                                        dto.price(),
+                                        dto.currency(),
+                                        accessTime);
     }
 }

@@ -9,7 +9,7 @@ import org.springframework.http.HttpStatus;
  */
 @Getter
 public class ResourceNotFoundException extends BaseException{
-    ResponseCode responseCode;
+    private final ResponseCode responseCode;
 
     public ResourceNotFoundException(HttpStatus httpStatus, Throwable e, ResponseCode responseCode) {
         super(httpStatus, e);

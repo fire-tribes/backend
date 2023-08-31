@@ -1,6 +1,9 @@
 package com.fires.fires.assets.domestic.stock.constant;
 
-@Deprecated
+/**
+ * @deprecated (MarketType 재정의)
+ */
+@Deprecated(since = "1")
 public enum MarketType {
     KOSPI, KOSDAQ, KONEX, KOSDAQ_GLOBAL;
 

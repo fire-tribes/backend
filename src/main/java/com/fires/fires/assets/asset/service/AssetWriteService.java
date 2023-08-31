@@ -5,10 +5,8 @@ import com.fires.fires.assets.asset.repository.AssetRepository;
 import com.fires.fires.assets.contant.MarketType;
 import com.fires.fires.common.constant.ResponseCode;
 import com.fires.fires.common.exception.ResourceNotFoundException;
-import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor

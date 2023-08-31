@@ -3,6 +3,7 @@ package com.fires.fires.search.controller;
 
 import com.fires.fires.assets.asset.dto.AssetDto;
 import com.fires.fires.assets.asset.service.AssetReadService;
+import com.fires.fires.assets.contant.AssetCategory;
 import com.fires.fires.assets.contant.AssetCategory_back;
 import com.fires.fires.common.constant.ResponseCode;
 import com.fires.fires.common.dto.Response;
@@ -39,7 +40,7 @@ public class SearchController {
     })
     @ResponseStatus(HttpStatus.OK)
     @GetMapping
-    public Response<Pageable, List<AssetDto>> searchAllCategory(@RequestParam(required = false, defaultValue = DEFAULT_CATEGORY) AssetCategory_back category,
+    public Response<Pageable, List<AssetDto>> searchAllCategory(@RequestParam(required = false, defaultValue = DEFAULT_CATEGORY) AssetCategory category,
                                                                 @Parameter(description = "검색어 회사 symbol, name 모두 입력 가능") @RequestParam String query,
                                                                 @Parameter(description = "페이징 처리를 위한 파라미터") @RequestParam(required = false, defaultValue = "0") Integer page) {
         PageRequest pageRequest = PageRequest.of(page, 30);

@@ -13,9 +13,7 @@ public record AssetPriceDto(Long assetId,
                             Currency currency) {
 
     public static AssetPriceDto fromKoreaInvest(AssetDto assetDto, DomesticPriceResponse response) {
-/*        if(!"0".equals(response.returnCode())){
-            return priceError(assetDto);
-        }*/
+
         return new AssetPriceDto(assetDto.assetId(),
                                     assetDto.symbol(),
                                     response.output().price(),

@@ -1,6 +1,8 @@
 package com.fires.fires.assets.domestic.stock.constant;
-
-@Deprecated
+/**
+ * @deprecated (MarketType 재정의)
+ */
+@Deprecated(since = "1")
 public enum StockType {
     COMMON_STOCK, NEW_PREFERRED_STOCK, OLD_PREFERRED_STOCK, PREFERRED_STOCK;
 
@@ -14,7 +16,7 @@ public enum StockType {
         } else if (stockType.equals("종류주권")) {
             return StockType.PREFERRED_STOCK;
         } else {
-            throw new RuntimeException();
+            throw new IllegalArgumentException();
         }
     }
 }

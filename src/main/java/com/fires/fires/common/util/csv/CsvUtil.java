@@ -17,6 +17,10 @@ import java.util.List;
 @Slf4j
 public final class CsvUtil{
 
+    private CsvUtil() {
+        throw new IllegalArgumentException("Utility class");
+    }
+
     /**
      * OpenCsv라이브러리를 이용해 csv파일을 객체로 변환해준다.
      * @param fileName db에 저장하고자 하는 정보가 포함된 csv 파일명
@@ -39,34 +43,5 @@ public final class CsvUtil{
             log.error("csv read error", e);
         }
         return dtos;
-    }
-
-    @Deprecated
-    public static List<NasdaqStockInfoDto> csvToObjectWithRecord() {
-        List<NasdaqStockInfoDto> dtos = new ArrayList<>();
-        try (FileReader reader = new FileReader(new ClassPathResource("csv/stock_info.csv").getFile(), Charset.forName("EUC-KR"))) {
-            dtos = new CsvToBeanBuilder<NasdaqStockInfoDto>(reader)
-                    //.withSkipLines(1)
-                    .withType(NasdaqStockInfoDto.class)
-                    .build()
-                    .parse();
-        } catch (IOException e) {
-            log.error("csv read error", e);
-        }
-
-        return dtos;
-    }
-    @Deprecated
-    public record NasdaqStockInfoDto(
-            @CsvBindByName(column = "Symbol")
-            String symbol,
-            @CsvBindByName(column = "Name")
-            String name,
-            @CsvBindByName(column = "Symbol")
-            String country,
-            @CsvBindByName(column = "Country")
-            String sector,
-            @CsvBindByName(column = "Industry")
-            String industry) {
     }
 }
