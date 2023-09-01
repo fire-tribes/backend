@@ -1,7 +1,6 @@
 package com.fires.fires.security.config;
 
 import com.fires.fires.common.dto.Response;
-import com.fires.fires.security.filter.JwtAuthenticationFilter;
 import io.swagger.v3.oas.models.Operation;
 import io.swagger.v3.oas.models.PathItem;
 import io.swagger.v3.oas.models.media.*;
@@ -11,7 +10,6 @@ import io.swagger.v3.oas.models.responses.ApiResponse;
 import io.swagger.v3.oas.models.responses.ApiResponses;
 import lombok.extern.slf4j.Slf4j;
 import org.springdoc.core.customizers.OpenApiCustomizer;
-import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
@@ -21,6 +19,7 @@ import java.util.List;
 /**
  * Security Filter에 swagger를 적용하기 위한 수동 설정 클래스
  * 현재 access token 발급 url은 controller에서 처리 하지 않고, filter에서 처리중
+ * 향후에는 RestDocs로 전환하고 싶기에 코드 리팩토링까지는 불필요
  */
 @Configuration
 @Slf4j
@@ -37,7 +36,7 @@ public class FilterSwaggerConfig {
             ObjectSchema objectSchema = new ObjectSchema();
             objectSchema.addProperty("providerUserId", new ComposedSchema());
             objectSchema.addProperty("email", new ComposedSchema());
-            //objectSchema.addProperty("email", new StringSchema());
+
             objectSchema.type(org.springframework.http.MediaType.APPLICATION_JSON_VALUE);
             operation.description("access token 생성");
             operation.setTags(List.of("로그인, 회원가입"));
@@ -46,28 +45,16 @@ public class FilterSwaggerConfig {
             parameter.name("로그인 요청");
             parameter.setSchema(objectSchema);
             parameter.setIn("body");
-            //operation.setParameters(List.of(parameter));
+
             RequestBody requestBody = new RequestBody();
             Schema<MemberLoginRequest> memberLoginRequestSchema = new Schema<>();
             memberLoginRequestSchema.addProperty("providerUserId", new StringSchema());
             memberLoginRequestSchema.addProperty("email", new StringSchema());
             requestBody.required(true);
             requestBody.setContent(new Content().addMediaType(org.springframework.http.MediaType.APPLICATION_JSON_VALUE, new MediaType().schema(memberLoginRequestSchema)));
-            //requestBody.setContent(new Content().addMediaType(org.springframework.http.MediaType.APPLICATION_JSON_VALUE, new MediaType().schema(objectSchema)));
+
             operation.requestBody(requestBody);
 
-/*
-            Schema schema = new Schema();
-            schema.type("String");
-            Parameter parameter = new Parameter();
-            parameter.setName("providerUserId");
-            parameter.setIn("query");
-            //parameter.setSchema(schema);
-            //parameter.setSchema(objectSchema);
-            //parameter.setContent(new Content().addMediaType("param", new MediaType().schema(objectSchema)));
-
-            //parameter.setSchema(objectSchema);
-            operation.setParameters(List.of(parameter));*/
 
             ApiResponses apiResponses = new ApiResponses();
 

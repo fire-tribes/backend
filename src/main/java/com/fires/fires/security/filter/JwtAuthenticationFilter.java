@@ -8,8 +8,9 @@ import com.fires.fires.common.exception.ResourceNotFoundException;
 import com.fires.fires.member.constant.Provider;
 import com.fires.fires.member.controller.MemberController;
 import com.fires.fires.member.dto.MemberDto;
-import com.fires.fires.member.dto.MemberSignupRequest;
+import com.fires.fires.member.dto.request.MemberSignupRequest;
 import com.fires.fires.member.service.MemberReadService;
+import com.fires.fires.member.service.MemberReadServiceImpl;
 import com.fires.fires.security.dto.UserPrincipal;
 import com.fires.fires.security.util.JwtTokenUtil;
 import jakarta.servlet.FilterChain;
@@ -35,8 +36,8 @@ import java.nio.charset.StandardCharsets;
 @Component
 @Slf4j
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
-    private final String LOGIN_URL = "/api/v1/auth/token";
-    private final AntPathRequestMatcher DEFAULT_REQUEST_MATCHER = new AntPathRequestMatcher(LOGIN_URL, "POST");
+    private static final String TOKEN_URL = "/api/v1/auth/token";
+    private final AntPathRequestMatcher DEFAULT_REQUEST_MATCHER = new AntPathRequestMatcher(TOKEN_URL, "POST");
     private SecurityContextHolderStrategy securityContextHolderStrategy = SecurityContextHolder.getContextHolderStrategy();
     private final JwtTokenUtil jwtTokenUtil;
     private final ObjectMapper objectMapper;
@@ -109,7 +110,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     }
 
     private void illegalAuthRequestHandler(HttpServletResponse response, Exception e){
-        log.debug("[Application Error] Invalid login request");
+        log.debug("[Application Error] Invalid login request", e);
         this.securityContextHolderStrategy.clearContext();
         Response<String, Void> errorResponse = Response.failWithMeta(ResponseCode.INVALID_REQUEST_ERROR.getCode(), ResponseCode.INVALID_REQUEST_ERROR.getDesc());
         sendResponse(response, errorResponse);

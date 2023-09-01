@@ -1,6 +1,6 @@
 package com.fires.fires.external.api.kis.constant;
 
-import com.fires.fires.assets.contant.MarketType;
+import com.fires.fires.asset.contant.MarketType;
 
 public enum ExchangeCode {
     NAS, NYS, AMS;

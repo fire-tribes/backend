@@ -3,7 +3,6 @@ package com.fires.fires.member.dto;
 import com.fires.fires.member.constant.Provider;
 import com.fires.fires.member.entity.Member;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public record MemberDto(Long id,

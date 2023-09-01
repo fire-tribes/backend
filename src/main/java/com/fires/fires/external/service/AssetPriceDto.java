@@ -1,7 +1,7 @@
 package com.fires.fires.external.service;
 
-import com.fires.fires.assets.asset.dto.AssetDto;
-import com.fires.fires.common.constant.Currency;
+import com.fires.fires.asset.dto.AssetDto;
+import com.fires.fires.portfolio.constant.Currency;
 import com.fires.fires.external.api.kis.dto.DomesticPriceResponse;
 import com.fires.fires.external.api.kis.dto.OverseasPriceResponse;
 
@@ -13,9 +13,7 @@ public record AssetPriceDto(Long assetId,
                             Currency currency) {
 
     public static AssetPriceDto fromKoreaInvest(AssetDto assetDto, DomesticPriceResponse response) {
-/*        if(!"0".equals(response.returnCode())){
-            return priceError(assetDto);
-        }*/
+
         return new AssetPriceDto(assetDto.assetId(),
                                     assetDto.symbol(),
                                     response.output().price(),

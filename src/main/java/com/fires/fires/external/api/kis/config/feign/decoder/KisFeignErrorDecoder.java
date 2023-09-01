@@ -1,6 +1,6 @@
 package com.fires.fires.external.api.kis.config.feign.decoder;
 
-import com.fires.fires.common.exception.KisException;
+import com.fires.fires.external.exception.KisException;
 import feign.Response;
 import feign.codec.ErrorDecoder;
 import org.springframework.http.HttpStatus;
@@ -12,7 +12,7 @@ public class KisFeignErrorDecoder implements ErrorDecoder {
     public Exception decode(String methodKey, Response response) {
         final HttpStatus httpStatus = HttpStatus.resolve(response.status());
 
-        if (httpStatus.isError()) {
+        if (httpStatus == null || httpStatus.isError()) {
             throw new KisException(HttpStatus.INTERNAL_SERVER_ERROR, errorDecoder.decode(methodKey, response));
         }
 
