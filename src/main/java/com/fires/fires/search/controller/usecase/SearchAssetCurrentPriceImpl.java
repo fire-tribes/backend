@@ -15,7 +15,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 @Transactional
-public class SearchAssetCurrentPriceBySymbol {
+public class SearchAssetCurrentPriceImpl implements SearchAssetCurrentPrice{
     private final AssetReadService assetReadService;
     private final AssetCurrentInfoService assetCurrentInfoService;
     public List<CurrentPriceResponse> execute(List<Long> assetIds) {

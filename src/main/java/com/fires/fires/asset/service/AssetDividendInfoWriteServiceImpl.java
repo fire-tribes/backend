@@ -11,7 +11,7 @@ import java.util.Collection;
 @RequiredArgsConstructor
 @Transactional
 @Service
-public class AssetDividendInfoWriteService {
+public class AssetDividendInfoWriteServiceImpl implements AssetDividendInfoWriteService{
 
     private final AssetDividendInfoRepository assetDividendInfoRepository;
 

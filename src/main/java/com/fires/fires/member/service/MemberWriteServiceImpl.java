@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 @Service
 @Transactional
-public class MemberWriteService {
+public class MemberWriteServiceImpl implements MemberWriteService{
     private final MemberRepository memberRepository;
 
     /**

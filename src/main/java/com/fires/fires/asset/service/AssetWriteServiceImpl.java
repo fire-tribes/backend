@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class AssetWriteService {
+public class AssetWriteServiceImpl implements AssetWriteService{
     private final AssetRepository assetRepository;
 
     /**

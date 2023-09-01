@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 @Service
-public class AssetDividendInfoReadService {
+public class AssetDividendInfoReadServiceImpl implements AssetDividendInfoReadService{
 
     private final AssetDividendInfoRepository assetDividendInfoRepository;
 

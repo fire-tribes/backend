@@ -14,7 +14,7 @@ import java.util.List;
 @Transactional(readOnly = true)
 @Service
 @RequiredArgsConstructor
-public class AssetReadService {
+public class AssetReadServiceImpl implements AssetReadService{
     private final AssetRepository assetRepository;
 
     /**

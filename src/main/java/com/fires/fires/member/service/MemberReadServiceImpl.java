@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
-public class MemberReadService {
+public class MemberReadServiceImpl implements MemberReadService{
 
     private final MemberRepository memberRepository;
     /**
