@@ -1,14 +1,13 @@
 package com.fires.fires.search.controller;
 
 
-import com.fires.fires.assets.asset.dto.AssetDto;
-import com.fires.fires.assets.asset.service.AssetReadService;
-import com.fires.fires.assets.contant.AssetCategory;
-import com.fires.fires.assets.contant.AssetCategory_back;
+import com.fires.fires.asset.dto.AssetDto;
+import com.fires.fires.asset.service.AssetReadService;
+import com.fires.fires.asset.contant.AssetCategory;
 import com.fires.fires.common.constant.ResponseCode;
 import com.fires.fires.common.dto.Response;
 import com.fires.fires.search.controller.dto.CurrentPriceResponse;
-import com.fires.fires.search.controller.usecase.SearchAssetCurrentPriceBySymbol;
+import com.fires.fires.search.controller.usecase.SearchAssetCurrentPrice;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -33,7 +32,7 @@ import java.util.List;
 public class SearchController {
     private static final String DEFAULT_CATEGORY = "ALL";
     private final AssetReadService assetReadService;
-    private final SearchAssetCurrentPriceBySymbol searchAssetCurrentPriceBySymbol;
+    private final SearchAssetCurrentPrice searchAssetCurrentPrice;
     @Operation(summary = "자산 목록 검색", description = "자산 정보 반환")
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "ok", useReturnTypeSchema = true)
@@ -54,8 +53,7 @@ public class SearchController {
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/price")
     public Response<Void, List<CurrentPriceResponse>> getCurrentPrice(@Parameter(description = "자산 검색 결과로 반환된 assetId 리스트")@RequestParam(name = "asset-ids") List<Long> assetIds) {
-        log.info("logging !!!! {}", assetIds);
-        List<CurrentPriceResponse> currentPrices = searchAssetCurrentPriceBySymbol.execute(assetIds);
+        List<CurrentPriceResponse> currentPrices = searchAssetCurrentPrice.execute(assetIds);
         return Response.success(ResponseCode.SUCCESS.getCode(), currentPrices);
     }
 }
