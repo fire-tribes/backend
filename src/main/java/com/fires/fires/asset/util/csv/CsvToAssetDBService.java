@@ -1,4 +1,4 @@
-package com.fires.fires.asset.service;
+package com.fires.fires.asset.util.csv;
 
 import com.fires.fires.asset.entity.Asset;
 import com.fires.fires.asset.repository.AssetRepository;

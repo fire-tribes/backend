@@ -1,8 +1,8 @@
-package com.fires.fires.assets.asset.entity.embed;
+package com.fires.fires.asset.entity.embed;
 
-import com.fires.fires.assets.contant.AssetCategory;
-import com.fires.fires.assets.contant.Country;
-import com.fires.fires.assets.contant.MarketType;
+import com.fires.fires.asset.contant.AssetCategory;
+import com.fires.fires.asset.contant.Country;
+import com.fires.fires.asset.contant.MarketType;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;

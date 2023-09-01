@@ -1,6 +1,6 @@
-package com.fires.fires.assets.asset.entity;
+package com.fires.fires.asset.entity;
 
-import com.fires.fires.assets.contant.Frequency;
+import com.fires.fires.asset.contant.Frequency;
 import com.fires.fires.common.entity.BaseTimeEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;

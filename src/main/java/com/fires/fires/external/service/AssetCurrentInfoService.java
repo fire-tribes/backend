@@ -1,6 +1,6 @@
 package com.fires.fires.external.service;
 
-import com.fires.fires.assets.asset.dto.AssetDto;
+import com.fires.fires.asset.dto.AssetDto;
 
 import java.util.List;
 

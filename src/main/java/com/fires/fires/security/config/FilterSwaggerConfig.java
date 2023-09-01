@@ -19,6 +19,7 @@ import java.util.List;
 /**
  * Security Filter에 swagger를 적용하기 위한 수동 설정 클래스
  * 현재 access token 발급 url은 controller에서 처리 하지 않고, filter에서 처리중
+ * 향후에는 RestDocs로 전환하고 싶기에 코드 리팩토링까지는 불필요
  */
 @Configuration
 @Slf4j

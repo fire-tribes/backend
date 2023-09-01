@@ -1,6 +1,6 @@
 package com.fires.fires.search.controller.dto;
 
-import com.fires.fires.common.constant.Currency;
+import com.fires.fires.portfolio.constant.Currency;
 
 import java.time.LocalDateTime;
 

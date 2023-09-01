@@ -1,7 +1,7 @@
 package com.fires.fires.external.service;
 
-import com.fires.fires.assets.asset.dto.AssetDto;
-import com.fires.fires.common.constant.Currency;
+import com.fires.fires.asset.dto.AssetDto;
+import com.fires.fires.portfolio.constant.Currency;
 import com.fires.fires.external.api.kis.dto.DomesticPriceResponse;
 import com.fires.fires.external.api.kis.dto.OverseasPriceResponse;
 

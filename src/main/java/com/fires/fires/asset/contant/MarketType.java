@@ -1,4 +1,4 @@
-package com.fires.fires.assets.contant;
+package com.fires.fires.asset.contant;
 
 public enum MarketType {
     KRX, KRX_KOSPI, KRX_KOSDAQ, KRX_KONEX, //국내

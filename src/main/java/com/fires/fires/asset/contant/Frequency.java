@@ -1,4 +1,4 @@
-package com.fires.fires.assets.contant;
+package com.fires.fires.asset.contant;
 
 /**
  * Polygon api에서 얻어온 배당주기

@@ -1,4 +1,4 @@
-package com.fires.fires.assets.contant;
+package com.fires.fires.asset.contant;
 
 public enum AssetCategory {
     STOCK, ETF, ETN

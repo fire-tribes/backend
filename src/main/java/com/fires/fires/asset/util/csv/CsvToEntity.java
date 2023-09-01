@@ -1,4 +1,4 @@
-package com.fires.fires.common.util.csv;
+package com.fires.fires.asset.util.csv;
 
 public interface CsvToEntity {
     void csvToEntity();

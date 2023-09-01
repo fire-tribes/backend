@@ -1,7 +1,7 @@
-package com.fires.fires.assets.asset.repository;
+package com.fires.fires.asset.repository;
 
-import com.fires.fires.assets.asset.entity.Asset;
-import com.fires.fires.assets.asset.entity.AssetDividendInfo;
+import com.fires.fires.asset.entity.Asset;
+import com.fires.fires.asset.entity.AssetDividendInfo;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.time.LocalDate;

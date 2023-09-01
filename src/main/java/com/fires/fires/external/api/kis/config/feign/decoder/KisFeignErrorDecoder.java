@@ -1,6 +1,6 @@
 package com.fires.fires.external.api.kis.config.feign.decoder;
 
-import com.fires.fires.common.exception.KisException;
+import com.fires.fires.external.exception.KisException;
 import feign.Response;
 import feign.codec.ErrorDecoder;
 import org.springframework.http.HttpStatus;

@@ -1,6 +1,6 @@
 package com.fires.fires.portfolio.entity.embed;
 
-import com.fires.fires.assets.asset.entity.Asset;
+import com.fires.fires.asset.entity.Asset;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
